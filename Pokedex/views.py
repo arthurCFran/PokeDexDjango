@@ -9,7 +9,7 @@ def Pokedex_index(request):
     context = {
         'pokemons': Pokemon.objects.all()
     }
-    return render(request, 'pokedex/index.html')
+    return render(request, 'pokedex/index.html', context)
 
 def Pokedex_adcionar(request:HttpRequest):
     if request.method == 'POST':
@@ -23,7 +23,7 @@ def Pokedex_adcionar(request:HttpRequest):
     return render(request, 'pokedex/adicionar.html', context)
 
 def Pokedex_remover(request:HttpRequest, pokemon_id):
-    pokemon = get_object_or_404(id=pokemon_id)
+    pokemon = get_object_or_404(Pokemon, id=pokemon_id)
     pokemon.delete()
     return redirect('pokedex:index') 
 
