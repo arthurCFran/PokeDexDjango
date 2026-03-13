@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua Pokedex</title>
+</head>
+<body>
+    <h1>Bem vindo à sua Pokedex!</h1>
+
+    <table>
+        <thead>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Nível</th>
+        </thead>
+        <tbody>
+            {% for pokemon in pokemons %}
+            <tr>
+                <td>{{ pokemon.name }}</td>
+                <td>{{ pokemon.type }}</td>
+                <td>{{ pokemon.description }}</td>
+                <td>{{ pokemon.level }}</td>
+                <td><a href="{% url 'pokedex:remover' pokemon.id %}">Remover</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'pokedex:adicionar' %}">Adicionar Pokémon</a>
+</body>
+</html>
